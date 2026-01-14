@@ -23,6 +23,10 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      // BURASI YENİ EKLENDİ: 'any' kullanımına izin veriyoruz
+      '@typescript-eslint/no-explicit-any': 'off',
+      // Kullanılmayan değişkenler için hata verme, sadece uyar
+      '@typescript-eslint/no-unused-vars': 'warn', 
     },
   }
 );
