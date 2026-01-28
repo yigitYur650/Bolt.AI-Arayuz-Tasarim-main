@@ -1,10 +1,9 @@
-import React from 'react';
 import { Wallet, CreditCard, TrendingUp, Globe } from 'lucide-react';
 
 interface DashboardSummaryProps {
   cashTotal: number;
   cardTotal: number;
-  mailOrderTotal: number; // YENİ: Mail Order eklendi
+  mailOrderTotal: number;
 }
 
 export default function DashboardSummary({ cashTotal, cardTotal, mailOrderTotal }: DashboardSummaryProps) {
@@ -18,16 +17,13 @@ export default function DashboardSummary({ cashTotal, cardTotal, mailOrderTotal 
     }).format(amount);
   };
 
-  // Genel Toplam (Hepsini topla)
   const grandTotal = cashTotal + cardTotal + mailOrderTotal;
 
   return (
     <div className="px-4 py-4 space-y-4">
       
-      {/* 3'lü Kutu Yapısı (Nakit - Kart - Mail Order) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        
-        {/* 1. NAKİT KUTUSU (Yeşil) */}
+        {/* NAKİT */}
         <div className="bg-emerald-900/20 border border-emerald-900/50 p-4 rounded-2xl relative overflow-hidden group">
           <div className="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
             <Wallet size={48} className="text-emerald-500" />
@@ -43,7 +39,7 @@ export default function DashboardSummary({ cashTotal, cardTotal, mailOrderTotal 
           </p>
         </div>
 
-        {/* 2. KART KUTUSU (Turuncu) */}
+        {/* KART */}
         <div className="bg-amber-900/20 border border-amber-900/50 p-4 rounded-2xl relative overflow-hidden group">
           <div className="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
             <CreditCard size={48} className="text-amber-500" />
@@ -59,7 +55,7 @@ export default function DashboardSummary({ cashTotal, cardTotal, mailOrderTotal 
           </p>
         </div>
 
-        {/* 3. MAIL ORDER KUTUSU (Mavi - YENİ) */}
+        {/* MAIL ORDER */}
         <div className="bg-blue-900/20 border border-blue-900/50 p-4 rounded-2xl relative overflow-hidden group">
           <div className="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
             <Globe size={48} className="text-blue-500" />
@@ -74,10 +70,9 @@ export default function DashboardSummary({ cashTotal, cardTotal, mailOrderTotal 
             {formatCurrency(mailOrderTotal)}
           </p>
         </div>
-
       </div>
 
-      {/* Günlük Toplam Ciro (Geniş Kutu) */}
+      {/* TOPLAM CİRO */}
       <div className="bg-slate-900 border border-slate-800 p-6 rounded-3xl relative overflow-hidden shadow-2xl">
         <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
         <div className="relative z-10">
